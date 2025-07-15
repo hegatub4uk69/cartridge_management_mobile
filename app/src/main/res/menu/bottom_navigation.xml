@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_transform"
+            android:icon="@drawable/ic_camera_black_24dp"
+            android:title="@string/menu_transform" />
+        <item
+            android:id="@+id/nav_new_cartridge"
+            android:icon="@drawable/outline_add_data_24"
+            android:title="@string/menu_new_cartridge" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_slideshow_black_24dp"
+            android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Выход"
+            android:onClick="logout"
+            />
+    </group>
+</menu>
