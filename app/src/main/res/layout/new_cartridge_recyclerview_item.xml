@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="378dp"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp"
+    android:background="@drawable/custom_edittext_auth"
+    android:padding="8dp">
 
-    <TextView
-        android:id="@+id/tvId"
+    <ImageButton
+        android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:layout_marginEnd="328dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/cartridge_item"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.461" />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/item_name"
+        android:layout_width="197dp"
+        android:layout_height="28dp"
+        android:gravity="center|left"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="serif"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:text="Модель картриджа"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/item_count"
+        app:layout_constraintHorizontal_bias="0.643"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47" />
+
+    <EditText
+        android:id="@+id/item_count"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:imeOptions="actionDone"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:textAlignment="center"
+        android:maxLines="1"
+        android:maxLength="2"
+        android:text="26"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/remove_button"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/remove_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
-</LinearLayout>
+        android:src="@drawable/close_outline"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="#FB0202" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,9 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:fontFamily="serif"
+    android:textStyle="bold"
     android:padding="16dp"
-    android:textSize="14sp"
+    android:textSize="18sp"
     android:textColor="#EDE8E8"/>

@@ -22,7 +22,7 @@
     <Spinner
         android:id="@+id/cartridgeSelect"
         android:layout_width="379dp"
-        android:layout_height="46dp"
+        android:layout_height="55dp"
         android:background="@drawable/custom_edittext_auth"
         android:completionThreshold="1"
         android:paddingHorizontal="10dp"
@@ -36,14 +36,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTest"
-        android:layout_width="410dp"
+        android:layout_width="390dp"
         android:layout_height="571dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

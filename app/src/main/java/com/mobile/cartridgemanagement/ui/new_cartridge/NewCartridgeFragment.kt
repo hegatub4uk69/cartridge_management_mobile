@@ -9,18 +9,17 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.CookieManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ListView
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mobile.cartridgemanagement.R
 import com.mobile.cartridgemanagement.databinding.NewCartridgeBinding
 import com.mobile.cartridgemanagement.ui.adapter.NewCartridgeRecViewDataAdapter
@@ -37,7 +36,9 @@ class NewCartridgeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private var adapter = NewCartridgeRecViewDataAdapter(emptyList())
+    private lateinit var adapterRecView: NewCartridgeRecViewDataAdapter
+    private lateinit var recyclerView: RecyclerView
+    private var selectedCartridgeModels = mutableListOf<NewCartridgeRecViewDataItem>()
     private var selectedCartridgeModelId: Int? = null
     private var dialogAlreadyShown = false
     private var originalCartridgeModels: List<NewCartridgeSelectDataItem>? = null
@@ -70,18 +71,13 @@ class NewCartridgeFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-//        cartridgeModelSelect.setOnTouchListener { _, _ ->
-//            showCartridgeModelSelectDialog()
-//            true
-//        }
-
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        setupButton()
+//        setupButton()
         setupSelectCartridgeModelTouch()
     }
 
@@ -153,6 +149,8 @@ class NewCartridgeFragment : Fragment() {
                     "Выбрано: ${selectedItem.name} (ID: ${selectedItem.id})",
                     Toast.LENGTH_SHORT
                 ).show()
+                onItemSelected(selectedItem.id, selectedItem.name)
+
                 alertDialog.dismiss()
             }
 
@@ -161,36 +159,55 @@ class NewCartridgeFragment : Fragment() {
         }
     }
 
+    private fun onItemSelected(id: Int, name: String) {
+        if (selectedCartridgeModels.any {it.id == id}) {
+            Toast.makeText(requireContext(), "$name уже добавлен", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        selectedCartridgeModels.add(NewCartridgeRecViewDataItem(id, name))
+        adapterRecView.updateItems(selectedCartridgeModels.toList())
+    }
+
     private fun setupRecyclerView() {
-        adapter = NewCartridgeRecViewDataAdapter(emptyList())
-        binding.recyclerViewTest.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = this@NewCartridgeFragment.adapter
-        }
-    }
-
-    private fun setupButton() {
-        binding.btnLoadData.setOnClickListener {
-            loadDataFromApi()
-        }
-    }
-
-    private fun loadDataFromApi() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val response = ApiClient.retrofit.create(ApiService::class.java).getCartridgeModels()
-                val items = response.result.map { NewCartridgeRecViewDataItem(it.id, it.name) }
-                adapter.items = items
-                adapter.notifyDataSetChanged()
-            } catch (e: Exception) {
-                Toast.makeText(
-                    requireContext(),
-                    "Ошибка загрузки: ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
+        recyclerView = binding.recyclerViewTest
+        adapterRecView = NewCartridgeRecViewDataAdapter(
+            onItemRemoved = { item ->
+                selectedCartridgeModels.remove(item)
+                adapterRecView.updateItems(selectedCartridgeModels)
+            },
+            onCountChanged = { item, newCount ->
+                item.count = newCount
+                // Можно обновить данные где-то еще, если нужно
             }
-        }
+        )
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapterRecView
     }
+//
+//    private fun setupButton() {
+//        binding.btnLoadData.setOnClickListener {
+//            loadDataFromApi()
+//        }
+//    }
+//
+//    private fun loadDataFromApi() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            try {
+//                val response = ApiClient.retrofit.create(ApiService::class.java).getCartridgeModels()
+//                val items = response.result.map { NewCartridgeRecViewDataItem(it.id, it.name) }
+//                adapter.items = items
+//                adapter.notifyDataSetChanged()
+//            } catch (e: Exception) {
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Ошибка загрузки: ${e.message}",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
