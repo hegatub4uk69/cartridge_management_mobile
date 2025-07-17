@@ -2,18 +2,25 @@ package com.mobile.cartridgemanagement.ui.new_cartridge
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
+import android.hardware.display.DisplayManager
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
+import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -57,7 +64,7 @@ class NewCartridgeFragment : Fragment() {
 
         val cartridgeModelSelect = binding.cartridgeSelect
         cartridgeModelSelect.adapter = ArrayAdapter(requireContext(), R.layout.new_cartridge_select_item, mutableListOf<String>().apply {
-            if (selectedCartridgeModelId == null) add("Выберите элемент")
+            if (selectedCartridgeModelId == null) add("Выберите модель картриджа")
         })
 
         cartridgeModelSelect.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -96,14 +103,28 @@ class NewCartridgeFragment : Fragment() {
     private fun showCartridgeModelSelectDialog() {
         viewLifecycleOwner.lifecycleScope.launch {
             val dialogBuilder = AlertDialog.Builder(requireContext())
-            val editText = EditText(requireContext()).apply { hint = "Поиск..." }
+            val editText = EditText(requireContext()).apply {
+                hint = "Поиск..."
+                gravity = Gravity.CENTER
+                maxLines = 1
+                inputType = InputType.TYPE_CLASS_TEXT
+                isSingleLine = true
+                setLines(1)
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
+                    setMargins(5, 15, 5, 5)
+                }
+            }
+            val listView = ListView(requireContext()).apply {
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                    setMargins(5, 0, 5, 5)
+                }
+            }
 
-            val listView = ListView(requireContext())
             val response = ApiClient.retrofit.create(ApiService::class.java).getCartridgeModels()
             val items = response.result.map { NewCartridgeSelectDataItem(it.id, it.name) }
             originalCartridgeModels = items
             filteredCartridgeModels = originalCartridgeModels!!.toMutableList()
-            val adapter = ArrayAdapter(requireContext(), R.layout.new_cartridge_select_item, filteredCartridgeModels!!.map { it.name })
+            val adapter = ArrayAdapter(requireContext(), R.layout.new_cartridge_model_select_item, filteredCartridgeModels!!.map { it.name })
             listView.adapter = adapter
 
             // Фильтрация списка при вводе текста
@@ -125,11 +146,11 @@ class NewCartridgeFragment : Fragment() {
 
             dialogBuilder.setView(LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
-                addView(editText, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                addView(listView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                addView(editText)
+                addView(listView)
             })
 
-            dialogBuilder.setTitle("Выберите элемент")
+            //dialogBuilder.setTitle("Модели картриджей")
             dialogBuilder.setNegativeButton("Отмена") {_, _ -> dialogAlreadyShown = false}
             val alertDialog = dialogBuilder.create()
 
@@ -155,7 +176,17 @@ class NewCartridgeFragment : Fragment() {
             }
 
             alertDialog.setOnDismissListener { dialogAlreadyShown = false }
+            alertDialog.setOnShowListener {
+                editText.requestFocus()
+                val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+            }
             alertDialog.show()
+            val displayMetrics = DisplayMetrics()
+            requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val width = (displayMetrics.widthPixels * 0.9).toInt()
+            val height = (displayMetrics.heightPixels * 0.4).toInt()
+            alertDialog.window?.setLayout(width, height)
         }
     }
 

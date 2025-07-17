@@ -31,7 +31,7 @@ class NewCartridgeRecViewDataAdapter(private val onItemRemoved: (NewCartridgeRec
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.clearListeners() //
+
         holder.bind(items[position])
     }
 
@@ -46,45 +46,49 @@ class NewCartridgeRecViewDataAdapter(private val onItemRemoved: (NewCartridgeRec
         fun bind(item: NewCartridgeRecViewDataItem) {
             currentItem = item
             nameTextView.text = item.name
-            // Устанавливаем значение без вызова слушателя
+
+            // Удаляем предыдущие слушатели
+            countInput.onFocusChangeListener = null
             countInput.removeTextChangedListener(textWatcher)
+
+            // Устанавливаем текущее значение
             countInput.setText(item.count.toString())
+
+            // Добавляем слушатели
             countInput.addTextChangedListener(textWatcher)
+            countInput.onFocusChangeListener = focusListener
         }
 
-        fun clearListeners() {
-            countInput.removeTextChangedListener(textWatcher)
-            currentItem = null
+        private val focusListener = View.OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) { // Когда поле теряет фокус
+                val editText = v as EditText
+                if (editText.text.isNullOrEmpty()) {
+                    editText.setText("1")
+                    currentItem?.let {
+                        it.count = 1
+                        onCountChanged(it, 1)
+                    }
+                }
+            }
         }
 
         private val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+                // Ничего не делаем при пустом значении (ждем потери фокуса)
+                if (s.isNullOrEmpty()) return
+
                 currentItem?.let { item ->
-                    when {
-                        s.isNullOrEmpty() -> {
-                            // Если поле пустое, устанавливаем минимальное значение
-                            val minCount = 1
-                            s?.replace(0, s.length, minCount.toString())
-                            updateItemCount(item, minCount)
-                        }
-                        else -> {
-                            val newCount = s.toString().toIntOrNull() ?: 1
-                            val clampedCount = newCount.coerceIn(1, 20) // Минимум 1, максимум 100
+                    val newCount = s.toString().toIntOrNull() ?: 1
+                    val clampedCount = newCount.coerceIn(1, 21)
 
-                            if (newCount != clampedCount) {
-                                s.replace(0, s.length, clampedCount.toString())
-                            }
-
-                            updateItemCount(item, clampedCount)
-                        }
+                    if (newCount != clampedCount) {
+                        s.replace(0, s.length, clampedCount.toString())
                     }
-                }
-            }
 
-            private fun updateItemCount(item: NewCartridgeRecViewDataItem, newCount: Int) {
-                if (newCount != item.count) {
-                    item.count = newCount
-                    onCountChanged(item, newCount)
+                    if (clampedCount != item.count) {
+                        item.count = clampedCount
+                        onCountChanged(item, clampedCount)
+                    }
                 }
             }
 
