@@ -1,6 +1,7 @@
 package com.mobile.cartridgemanagement
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
         setSupportActionBar(binding.appBarMain.toolbar)
 
 //        binding.appBarMain.fab?.setOnClickListener { view ->
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         binding.navView?.let {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_transform, R.id.nav_new_cartridge, R.id.nav_slideshow, R.id.nav_settings
+                    R.id.nav_cartridge_actions, R.id.nav_new_cartridge, R.id.nav_operations, R.id.nav_settings
                 ),
                 binding.drawerLayout
             )
@@ -55,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         binding.appBarMain.contentMain.bottomNavView?.let {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_transform, R.id.nav_new_cartridge, R.id.nav_slideshow
+                    R.id.nav_cartridge_actions, R.id.nav_new_cartridge, R.id.nav_operations
                 )
             )
             setupActionBarWithNavController(navController, appBarConfiguration)

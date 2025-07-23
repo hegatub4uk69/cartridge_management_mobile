@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="250dp"
-        android:layout_height="42dp"
+        android:layout_height="45dp"
         android:background="@drawable/custom_edittext_auth"
         android:fontFamily="serif"
         android:hint="Пароль"
@@ -20,10 +20,10 @@
         android:textColorHint="#EDE8E8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.603" />
 
     <ImageView
         android:layout_width="150dp"
@@ -34,12 +34,12 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.363" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="250dp"
-        android:layout_height="48dp"
+        android:layout_height="45dp"
         android:background="@drawable/custom_edittext_auth"
         android:fontFamily="serif"
         android:hint="Логин"
@@ -65,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+        app:layout_constraintVertical_bias="0.672" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

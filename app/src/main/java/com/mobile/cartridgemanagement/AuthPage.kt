@@ -2,6 +2,7 @@ package com.mobile.cartridgemanagement
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.webkit.CookieManager
 import android.widget.Button
@@ -31,6 +32,7 @@ class AuthPage : AppCompatActivity() {
             return
         }
         setContentView(R.layout.auth_page)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         // Инициализация элементов через findViewById
         etUsername = findViewById(R.id.etUsername)
@@ -75,10 +77,10 @@ class AuthPage : AppCompatActivity() {
             }
         }
     }
-    private fun saveCookiesToPrefs(cookieHeader: String?) {
+    private fun modifyUserSharedPrefs(departmentId: Int?) {
         var context = this.applicationContext
-        val prefs = context.getSharedPreferences("AuthPrefs", Context.MODE_PRIVATE)
-        prefs.edit { putString("session_cookies", cookieHeader) }
+        val prefs = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        prefs.edit { putString("department_id", departmentId.toString()) }
     }
 
     private fun isUserLoggedIn(): Boolean {

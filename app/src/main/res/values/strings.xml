@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Учет картриджей</string>
+    <string name="app_name">Учёт картриджей</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -7,10 +7,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_transform">Transform</string>
     <string name="menu_new_cartridge">Добавление картриджей</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_settings">Settings</string>
+    <string name="menu_operations">Операции</string>
+    <string name="menu_cartridge_actions">Учёт картриджей</string>
+    <string name="menu_logout">Выход</string>
+    <string name="menu_settings">Настройки</string>
 
     <string name="lorem_ipsum_title">Lorem Ipsum"</string>
     <string name="lorem_ipsum">Lorem Ipsum is simply placeholder text of the printing and
