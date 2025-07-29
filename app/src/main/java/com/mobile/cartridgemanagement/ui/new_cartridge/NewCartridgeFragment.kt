@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.mobile.cartridgemanagement.R
 import com.mobile.cartridgemanagement.databinding.NewCartridgeBinding
 import com.mobile.cartridgemanagement.ui.adapter.NewCartridgeRecViewDataAdapter
@@ -33,6 +34,8 @@ import com.mobile.cartridgemanagement.ui.data.NewCartridgeSelectDataItem
 import com.mobile.cartridgemanagement.ui.network.ApiClient
 import com.mobile.cartridgemanagement.ui.network.ApiService
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class NewCartridgeFragment : Fragment() {
 
@@ -85,7 +88,7 @@ class NewCartridgeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-//        setupButton()
+        setupButton()
         updateSubmitButtonState()
         setupSelectCartridgeModelTouch()
     }
@@ -188,11 +191,11 @@ class NewCartridgeFragment : Fragment() {
 
     private fun updateSubmitButtonState() {
         val isButtonEnabled = selectedCartridgeModels.isNotEmpty()
-        binding.btnLoadData.isEnabled = isButtonEnabled
+        binding.btnAddCartridge.isEnabled = isButtonEnabled
     }
 
     private fun onItemSelected(id: Int, name: String) {
-        if (selectedCartridgeModels.any {it.id == id}) {
+        if (selectedCartridgeModels.any {it.model_id == id}) {
             Toast.makeText(requireContext(), "$name уже добавлен", Toast.LENGTH_SHORT).show()
             return
         }
@@ -203,7 +206,7 @@ class NewCartridgeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        recyclerView = binding.recyclerViewTest
+        recyclerView = binding.recyclerViewAddCartridge
         adapterRecView = NewCartridgeRecViewDataAdapter(
             onItemRemoved = { item ->
                 selectedCartridgeModels.remove(item)
@@ -219,29 +222,31 @@ class NewCartridgeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapterRecView
     }
-//
-//    private fun setupButton() {
-//        binding.btnLoadData.setOnClickListener {
-//            loadDataFromApi()
-//        }
-//    }
-//
-//    private fun loadDataFromApi() {
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            try {
-//                val response = ApiClient.retrofit.create(ApiService::class.java).getCartridgeModels()
-//                val items = response.result.map { NewCartridgeRecViewDataItem(it.id, it.name) }
-//                adapter.items = items
-//                adapter.notifyDataSetChanged()
-//            } catch (e: Exception) {
-//                Toast.makeText(
-//                    requireContext(),
-//                    "Ошибка загрузки: ${e.message}",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }
-//    }
+
+    private fun setupButton() {
+        binding.btnAddCartridge.setOnClickListener {
+            addCartridge()
+        }
+    }
+
+    private fun addCartridge() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val gson = Gson()
+                val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
+                val response = ApiClient.retrofit.create(ApiService::class.java).addCartridge(gson.toJson(selectedCartridgeModels).toRequestBody(mediaType))
+                selectedCartridgeModels.clear()
+                adapterRecView.updateItems(emptyList())
+
+                updateSubmitButtonState()
+                Toast.makeText(requireContext(), response.result, Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
+            } finally {
+                updateSubmitButtonState()
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

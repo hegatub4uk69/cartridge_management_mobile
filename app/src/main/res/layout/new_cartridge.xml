@@ -7,7 +7,7 @@
     tools:context=".ui.new_cartridge.NewCartridgeFragment">
 
     <Button
-        android:id="@+id/btnLoadData"
+        android:id="@+id/btnAddCartridge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#6F85FF"
@@ -35,7 +35,8 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewTest"
+        android:id="@+id/recyclerViewAddCartridge"
+        android:background="@drawable/custom_rec_view_add_cartridge"
         android:layout_width="390dp"
         android:layout_height="571dp"
         app:layout_constraintBottom_toBottomOf="parent"
