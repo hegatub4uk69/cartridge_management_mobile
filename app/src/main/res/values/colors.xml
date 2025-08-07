@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="hm_tint">#F1ECEC</color>
+
+    <color name="orange">#FFC107</color>
+    <color name="green">#4CA837</color>
+    <color name="red">#D11F1F</color>
+    <color name="violet">#8E58DA</color>
 </resources>

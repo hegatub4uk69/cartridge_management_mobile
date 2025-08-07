@@ -7,11 +7,24 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!--Заголовки навигационной панели-->
     <string name="menu_new_cartridge">Добавление картриджей</string>
     <string name="menu_operations">Операции</string>
     <string name="menu_cartridge_actions">Учёт картриджей</string>
     <string name="menu_logout">Выход</string>
     <string name="menu_settings">Настройки</string>
+
+    <!--Страница основных действий с картриджами-->
+    <string name="out">Выдача</string>
+    <string name="in">Приём</string>
+    <string name="decommiss">Списание</string>
+    <string name="barcode_scan">Отсканировать штрихкод</string>
+    <string name="cartridge_info">Информация о картридже</string>
+    <string name="cartridge_number">Номер картриджа...</string>
+    <string name="cartridge_model">Модель картриджа...</string>
+    <string name="cartridge_department">Местоположение...</string>
+    <string name="cartridge_department_datetime">Дата местоположения...</string>
+    <string name="btn_submit">Подтвердить действие</string>
 
     <string name="lorem_ipsum_title">Lorem Ipsum"</string>
     <string name="lorem_ipsum">Lorem Ipsum is simply placeholder text of the printing and

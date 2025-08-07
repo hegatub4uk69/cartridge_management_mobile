@@ -6,17 +6,250 @@
     android:layout_height="match_parent"
     tools:context=".ui.cartridge_actions.CartridgeActionsFragment">
 
-    <TextView
-        android:id="@+id/text_cartridge_actions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <LinearLayout
+        android:layout_width="343dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171">
+        <RadioButton
+            android:id="@+id/out"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:text="@string/out"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/in"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:text="@string/in"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/decommiss"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:text="@string/decommiss"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/barcodeScan"
+        android:layout_width="379dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_auth"
+        android:fontFamily="serif"
+        android:drawableStart="@drawable/outline_barcode_scanner_24"
+        android:drawablePadding="8dp"
+        android:hint="@string/barcode_scan"
+        android:paddingHorizontal="10dp"
+        android:textColor="#EDE8E8"
+        android:textColorHint="#EDE8E8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
+
+    <Spinner
+        android:id="@+id/departmentSelect"
+        android:layout_width="379dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_edittext_auth"
+        android:completionThreshold="1"
+        android:paddingHorizontal="10dp"
+        android:textColor="#EDE8E8"
+        android:textColorHint="#EDE8E8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="379dp"
+        android:layout_height="206dp"
+        android:background="@drawable/custom_cartridge_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569" >
+        <TextView
+            android:layout_width="264dp"
+            android:layout_height="26dp"
+            android:fontFamily="serif"
+            android:paddingStart="5dp"
+            android:text="@string/cartridge_info"
+            android:textColor="@color/hm_tint"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.139"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.088" />
+        <View
+            android:layout_width="340dp"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.205" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:paddingEnd="6dp"
+            android:src="@drawable/outline_confirmation_number_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323"
+            app:tint="@color/hm_tint" />
+        <TextView
+            android:id="@+id/cartridge_number"
+            android:layout_width="315dp"
+            android:layout_height="30dp"
+            android:fontFamily="serif"
+            android:gravity="left|center"
+            android:maxLines="1"
+            android:paddingHorizontal="6dp"
+            android:hint="@string/cartridge_number"
+            android:textColorHint="@color/hm_tint"
+            android:textColor="@color/hm_tint"
+            android:textSize="14.5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:paddingEnd="6dp"
+            android:src="@drawable/card_text_outline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.494"
+            app:tint="@color/hm_tint" />
+        <TextView
+            android:id="@+id/cartridge_model"
+            android:layout_width="315dp"
+            android:layout_height="30dp"
+            android:fontFamily="serif"
+            android:gravity="left|center"
+            android:maxLines="1"
+            android:paddingHorizontal="6dp"
+            android:hint="@string/cartridge_model"
+            android:textColorHint="@color/hm_tint"
+            android:textColor="@color/hm_tint"
+            android:textSize="14.5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.494" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:paddingEnd="6dp"
+            android:src="@drawable/department_ico"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.664"
+            app:tint="@color/hm_tint" />
+        <TextView
+            android:id="@+id/cartridge_department"
+            android:layout_width="315dp"
+            android:layout_height="30dp"
+            android:fontFamily="serif"
+            android:gravity="left|center"
+            android:maxLines="1"
+            android:paddingHorizontal="6dp"
+            android:hint="@string/cartridge_department"
+            android:textColorHint="@color/hm_tint"
+            android:textColor="@color/hm_tint"
+            android:textSize="14.5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.664" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:paddingEnd="6dp"
+            android:src="@drawable/outline_calendar_clock_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.835"
+            app:tint="@color/hm_tint" />
+        <TextView
+            android:id="@+id/cartridge_department_datetime"
+            android:layout_width="315dp"
+            android:layout_height="30dp"
+            android:fontFamily="serif"
+            android:gravity="left|center"
+            android:maxLines="1"
+            android:paddingHorizontal="6dp"
+            android:hint="@string/cartridge_department_datetime"
+            android:textColorHint="@color/hm_tint"
+            android:textColor="@color/hm_tint"
+            android:textSize="14.5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.835" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#6F85FF"
+        android:text="@string/btn_submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.754" />
 </androidx.constraintlayout.widget.ConstraintLayout>
