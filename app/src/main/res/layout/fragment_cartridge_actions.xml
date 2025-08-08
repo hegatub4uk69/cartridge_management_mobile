@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.cartridge_actions.CartridgeActionsFragment">
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/radioActions"
         android:layout_width="343dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -14,38 +15,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171">
-        <RadioButton
+        app:layout_constraintVertical_bias="0.171" >
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/out"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:text="@string/out"
             android:textSize="18sp"
+            android:buttonTint="@color/soft_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/in"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:text="@string/in"
             android:textSize="18sp"
+            android:buttonTint="@color/soft_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/decommiss"
             android:layout_width="118dp"
             android:layout_height="wrap_content"
             android:text="@string/decommiss"
             android:textSize="18sp"
+            android:buttonTint="@color/soft_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+    </RadioGroup>
 
     <EditText
         android:id="@+id/barcodeScan"
@@ -59,6 +63,9 @@
         android:paddingHorizontal="10dp"
         android:textColor="#EDE8E8"
         android:textColorHint="#EDE8E8"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:lines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

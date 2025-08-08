@@ -7,6 +7,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!--Страница входа-->
+    <string name="login">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="btn_auth">Авторизация</string>
+
     <!--Заголовки навигационной панели-->
     <string name="menu_new_cartridge">Добавление картриджей</string>
     <string name="menu_operations">Операции</string>

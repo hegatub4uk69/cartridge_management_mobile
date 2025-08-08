@@ -14,7 +14,7 @@
             android:title="@string/menu_operations" />
         <item
             android:id="@+id/nav_cartridge_actions"
-            android:icon="@drawable/outline_edit_data_24"
+            android:icon="@drawable/outline_checkbook_24"
             android:title="@string/menu_cartridge_actions" />
         <item
             android:id="@+id/logout"
