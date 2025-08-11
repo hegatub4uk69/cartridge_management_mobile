@@ -31,6 +31,13 @@
     <string name="cartridge_department_datetime">Дата местоположения...</string>
     <string name="btn_submit">Подтвердить действие</string>
 
+    <!--Страница операций над картриджами-->
+    <string name="cartridge_refill">Отправить картриджи на заправку</string>
+    <string name="cartridge_receive">Принять картриджи с заправки</string>
+
+    <!--Страница добавления картриджей-->
+    <string name="btn_add_cartridge">Добавить картриджи</string>
+
     <string name="lorem_ipsum_title">Lorem Ipsum"</string>
     <string name="lorem_ipsum">Lorem Ipsum is simply placeholder text of the printing and
         typesetting industry. Lorem Ipsum has been the industry\'s standard placeholder text ever

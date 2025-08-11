@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="6dp"
     tools:context=".ui.cartridge_actions.CartridgeActionsFragment">
 
     <!-- Центральный контейнер для всей формы -->
@@ -89,6 +89,8 @@
             android:fontFamily="serif"
             android:hint="@string/barcode_scan"
             android:maxLines="1"
+            android:lines="1"
+            android:singleLine="true"
             android:paddingHorizontal="10dp"
             android:textColor="#EDE8E8"
             android:textColorHint="#EDE8E8"
