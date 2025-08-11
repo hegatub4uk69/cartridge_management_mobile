@@ -1,262 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.cartridge_actions.CartridgeActionsFragment">
 
-    <RadioGroup
-        android:id="@+id/radioActions"
-        android:layout_width="343dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" >
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/out"
-            android:layout_width="112dp"
-            android:layout_height="wrap_content"
-            android:text="@string/out"
-            android:textSize="18sp"
-            android:buttonTint="@color/soft_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/in"
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
-            android:text="@string/in"
-            android:textSize="18sp"
-            android:buttonTint="@color/soft_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/decommiss"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:text="@string/decommiss"
-            android:textSize="18sp"
-            android:buttonTint="@color/soft_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/barcodeScan"
-        android:layout_width="379dp"
-        android:layout_height="50dp"
-        android:background="@drawable/custom_edittext_auth"
-        android:fontFamily="serif"
-        android:drawableStart="@drawable/outline_barcode_scanner_24"
-        android:drawablePadding="8dp"
-        android:hint="@string/barcode_scan"
-        android:paddingHorizontal="10dp"
-        android:textColor="#EDE8E8"
-        android:textColorHint="#EDE8E8"
-        android:singleLine="true"
-        android:maxLines="1"
-        android:lines="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
-
-    <Spinner
-        android:id="@+id/departmentSelect"
-        android:layout_width="379dp"
-        android:layout_height="55dp"
-        android:background="@drawable/custom_edittext_auth"
-        android:completionThreshold="1"
-        android:paddingHorizontal="10dp"
-        android:textColor="#EDE8E8"
-        android:textColorHint="#EDE8E8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
-
+    <!-- Центральный контейнер для всей формы -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="379dp"
-        android:layout_height="206dp"
-        android:background="@drawable/custom_cartridge_info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" >
-        <TextView
-            android:layout_width="264dp"
-            android:layout_height="26dp"
-            android:fontFamily="serif"
-            android:paddingStart="5dp"
-            android:text="@string/cartridge_info"
-            android:textColor="@color/hm_tint"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.139"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.088" />
-        <View
-            android:layout_width="340dp"
-            android:layout_height="2dp"
-            android:background="#c0c0c0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.205" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:paddingEnd="6dp"
-            android:src="@drawable/outline_confirmation_number_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.323"
-            app:tint="@color/hm_tint" />
-        <TextView
-            android:id="@+id/cartridge_number"
-            android:layout_width="315dp"
-            android:layout_height="30dp"
-            android:fontFamily="serif"
-            android:gravity="left|center"
-            android:maxLines="1"
-            android:paddingHorizontal="6dp"
-            android:hint="@string/cartridge_number"
-            android:textColorHint="@color/hm_tint"
-            android:textColor="@color/hm_tint"
-            android:textSize="14.5sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.323" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:paddingEnd="6dp"
-            android:src="@drawable/card_text_outline"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.494"
-            app:tint="@color/hm_tint" />
-        <TextView
-            android:id="@+id/cartridge_model"
-            android:layout_width="315dp"
-            android:layout_height="30dp"
-            android:fontFamily="serif"
-            android:gravity="left|center"
-            android:maxLines="1"
-            android:paddingHorizontal="6dp"
-            android:hint="@string/cartridge_model"
-            android:textColorHint="@color/hm_tint"
-            android:textColor="@color/hm_tint"
-            android:textSize="14.5sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.494" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:paddingEnd="6dp"
-            android:src="@drawable/department_ico"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.664"
-            app:tint="@color/hm_tint" />
-        <TextView
-            android:id="@+id/cartridge_department"
-            android:layout_width="315dp"
-            android:layout_height="30dp"
-            android:fontFamily="serif"
-            android:gravity="left|center"
-            android:maxLines="1"
-            android:paddingHorizontal="6dp"
-            android:hint="@string/cartridge_department"
-            android:textColorHint="@color/hm_tint"
-            android:textColor="@color/hm_tint"
-            android:textSize="14.5sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.664" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:paddingEnd="6dp"
-            android:src="@drawable/outline_calendar_clock_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.835"
-            app:tint="@color/hm_tint" />
-        <TextView
-            android:id="@+id/cartridge_department_datetime"
-            android:layout_width="315dp"
-            android:layout_height="30dp"
-            android:fontFamily="serif"
-            android:gravity="left|center"
-            android:maxLines="1"
-            android:paddingHorizontal="6dp"
-            android:hint="@string/cartridge_department_datetime"
-            android:textColorHint="@color/hm_tint"
-            android:textColor="@color/hm_tint"
-            android:textSize="14.5sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.835" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
+        android:id="@+id/form_container"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#6F85FF"
-        android:text="@string/btn_submit"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="1">
+
+        <!-- RadioGroup с действиями -->
+        <RadioGroup
+            android:id="@+id/radioActions"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/out"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/out"
+                android:textSize="17sp"
+                android:buttonTint="@color/soft_blue"
+                android:gravity="center"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/in"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/in"
+                android:textSize="17sp"
+                android:buttonTint="@color/soft_blue"
+                android:gravity="center"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/decommiss"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/decommiss"
+                android:textSize="17sp"
+                android:buttonTint="@color/soft_blue"
+                android:gravity="center"/>
+        </RadioGroup>
+
+        <!-- Spinner выбора отдела -->
+        <Spinner
+            android:id="@+id/departmentSelect"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_edittext_auth"
+            android:completionThreshold="1"
+            android:paddingHorizontal="10dp"
+            android:textColor="#EDE8E8"
+            android:textColorHint="#EDE8E8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioActions"/>
+
+        <!-- Поле сканирования штрих-кода -->
+        <EditText
+            android:id="@+id/barcodeScan"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_edittext_auth"
+            android:drawableStart="@drawable/outline_barcode_scanner_24"
+            android:drawablePadding="8dp"
+            android:fontFamily="serif"
+            android:hint="@string/barcode_scan"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:textColor="#EDE8E8"
+            android:textColorHint="#EDE8E8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/departmentSelect"/>
+
+        <!-- Блок информации о картридже -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cartridge_info_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_cartridge_info"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barcodeScan">
+
+            <!-- Заголовок блока -->
+            <TextView
+                android:id="@+id/cartridge_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:fontFamily="serif"
+                android:text="@string/cartridge_info"
+                android:textColor="@color/hm_tint"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Разделительная линия -->
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="4dp"
+                android:background="#c0c0c0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cartridge_info_title"/>
+
+            <!-- Строка с номером картриджа -->
+            <LinearLayout
+                android:id="@+id/cartridge_number_row"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/outline_confirmation_number_24"
+                    app:tint="@color/hm_tint"/>
+
+                <TextView
+                    android:id="@+id/cartridge_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center_vertical"
+                    android:hint="@string/cartridge_number"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="6dp"
+                    android:textColor="@color/hm_tint"
+                    android:textColorHint="@color/hm_tint"
+                    android:textSize="14.5sp"/>
+            </LinearLayout>
+
+            <!-- Строка с моделью картриджа -->
+            <LinearLayout
+                android:id="@+id/cartridge_model_row"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cartridge_number_row">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/card_text_outline"
+                    app:tint="@color/hm_tint"/>
+
+                <TextView
+                    android:id="@+id/cartridge_model"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center_vertical"
+                    android:hint="@string/cartridge_model"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="6dp"
+                    android:textColor="@color/hm_tint"
+                    android:textColorHint="@color/hm_tint"
+                    android:textSize="14.5sp"/>
+            </LinearLayout>
+
+            <!-- Строка с отделом картриджа -->
+            <LinearLayout
+                android:id="@+id/cartridge_department_row"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cartridge_model_row">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/department_ico"
+                    app:tint="@color/hm_tint"/>
+
+                <TextView
+                    android:id="@+id/cartridge_department"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center_vertical"
+                    android:hint="@string/cartridge_department"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="6dp"
+                    android:textColor="@color/hm_tint"
+                    android:textColorHint="@color/hm_tint"
+                    android:textSize="14.5sp"/>
+            </LinearLayout>
+
+            <!-- Строка с датой последнего изменения -->
+            <LinearLayout
+                android:id="@+id/cartridge_date_row"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cartridge_department_row">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/outline_calendar_clock_24"
+                    app:tint="@color/hm_tint"/>
+
+                <TextView
+                    android:id="@+id/cartridge_department_datetime"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center_vertical"
+                    android:hint="@string/cartridge_department_datetime"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="6dp"
+                    android:textColor="@color/hm_tint"
+                    android:textColorHint="@color/hm_tint"
+                    android:textSize="14.5sp"/>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Кнопка подтверждения -->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#6F85FF"
+            android:text="@string/btn_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cartridge_info_container"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

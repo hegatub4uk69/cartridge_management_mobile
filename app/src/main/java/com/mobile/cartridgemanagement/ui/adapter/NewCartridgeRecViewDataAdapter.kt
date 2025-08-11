@@ -79,7 +79,7 @@ class NewCartridgeRecViewDataAdapter(private val onItemRemoved: (NewCartridgeRec
 
                 currentItem?.let { item ->
                     val newCount = s.toString().toIntOrNull() ?: 1
-                    val clampedCount = newCount.coerceIn(1, 21)
+                    val clampedCount = newCount.coerceIn(1, 20)
 
                     if (newCount != clampedCount) {
                         s.replace(0, s.length, clampedCount.toString())

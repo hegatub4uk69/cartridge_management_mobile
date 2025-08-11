@@ -13,6 +13,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Theme.CartridgeManagement.NoActionBar">

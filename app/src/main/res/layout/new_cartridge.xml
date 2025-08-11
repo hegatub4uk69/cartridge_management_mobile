@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="14dp"
     tools:context=".ui.new_cartridge.NewCartridgeFragment">
 
+    <!-- Spinner (верх экрана) -->
+    <Spinner
+        android:id="@+id/cartridgeSelect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="55dp"
+        android:background="@drawable/custom_edittext_auth"
+        android:paddingHorizontal="10dp"
+        android:textColor="#EDE8E8"
+        android:textColorHint="#EDE8E8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- RecyclerView (занимает всё доступное пространство) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAddCartridge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_rec_view_add_cartridge"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddCartridge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartridgeSelect" />
+
+    <!-- Кнопка (низ экрана) -->
     <Button
         android:id="@+id/btnAddCartridge"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#6F85FF"
         android:text="Загрузить данные"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
-
-    <Spinner
-        android:id="@+id/cartridgeSelect"
-        android:layout_width="379dp"
-        android:layout_height="55dp"
-        android:background="@drawable/custom_edittext_auth"
-        android:completionThreshold="1"
-        android:paddingHorizontal="10dp"
-        android:textColor="#EDE8E8"
-        android:textColorHint="#EDE8E8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAddCartridge"
-        android:background="@drawable/custom_rec_view_add_cartridge"
-        android:layout_width="390dp"
-        android:layout_height="571dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
