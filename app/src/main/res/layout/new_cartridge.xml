@@ -13,7 +13,7 @@
         android:id="@+id/cartridgeSelect"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="55dp"
+        android:minHeight="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_edittext_auth"
         android:paddingHorizontal="10dp"

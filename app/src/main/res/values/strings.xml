@@ -23,7 +23,8 @@
     <string name="out">Выдача</string>
     <string name="in">Приём</string>
     <string name="decommiss">Списание</string>
-    <string name="barcode_scan">Отсканировать штрихкод</string>
+    <string name="manual_input">Ручной ввод</string>
+    <string name="barcode_scan">Отсканировать штрих-код</string>
     <string name="cartridge_info">Информация о картридже</string>
     <string name="cartridge_number">Номер картриджа...</string>
     <string name="cartridge_model">Модель картриджа...</string>

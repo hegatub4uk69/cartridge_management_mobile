@@ -66,8 +66,8 @@
         <Spinner
             android:id="@+id/departmentSelect"
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/custom_edittext_auth"
             android:completionThreshold="1"
             android:paddingHorizontal="10dp"
@@ -77,26 +77,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/radioActions"/>
 
-        <!-- Поле сканирования штрих-кода -->
-        <EditText
-            android:id="@+id/barcodeScan"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutBarcodeScan"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/custom_edittext_auth"
-            android:drawableStart="@drawable/outline_barcode_scanner_24"
-            android:drawablePadding="8dp"
-            android:fontFamily="serif"
-            android:hint="@string/barcode_scan"
-            android:maxLines="1"
-            android:lines="1"
-            android:singleLine="true"
-            android:paddingHorizontal="10dp"
-            android:textColor="#EDE8E8"
-            android:textColorHint="#EDE8E8"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/departmentSelect"/>
+            app:layout_constraintTop_toBottomOf="@id/departmentSelect">
+            <!-- Поле сканирования штрих-кода -->
+            <EditText
+                android:id="@+id/barcodeScan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_edittext_auth"
+                android:drawableStart="@drawable/outline_barcode_scanner_24"
+                android:drawablePadding="8dp"
+                android:fontFamily="serif"
+                android:hint="@string/barcode_scan"
+                android:maxLines="1"
+                android:lines="1"
+                android:singleLine="true"
+                android:paddingHorizontal="10dp"
+                android:textColor="#EDE8E8"
+                android:textColorHint="#EDE8E8"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/manualInputCheckbox"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- CheckBox справа -->
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/manualInputCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:paddingEnd="8dp"
+                android:buttonTint="@color/hm_tint"
+                android:textColor="@color/hm_tint"
+                android:button="@drawable/custom_checkbox_button_manual_input"
+                android:background="@drawable/custom_edittext_auth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Блок информации о картридже -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -108,7 +134,7 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barcodeScan">
+            app:layout_constraintTop_toBottomOf="@id/layoutBarcodeScan">
 
             <!-- Заголовок блока -->
             <TextView
