@@ -31,6 +31,7 @@
     <string name="cartridge_department">Местоположение...</string>
     <string name="cartridge_department_datetime">Дата местоположения...</string>
     <string name="btn_submit">Подтвердить действие</string>
+    <string name="scanner">Наведите камеру на штрих-код</string>
 
     <!--Страница операций над картриджами-->
     <string name="cartridge_refill">Отправить картриджи на заправку</string>

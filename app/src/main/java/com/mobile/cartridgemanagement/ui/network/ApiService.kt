@@ -1,6 +1,8 @@
 package com.mobile.cartridgemanagement.ui.network
 
+import com.mobile.cartridgemanagement.ui.network.requests.GetCartridgeInfo
 import com.mobile.cartridgemanagement.ui.network.requests.LoginRequest
+import com.mobile.cartridgemanagement.ui.network.responses.CartridgeInfo
 import com.mobile.cartridgemanagement.ui.network.responses.CartridgeModels
 import com.mobile.cartridgemanagement.ui.network.responses.CartridgeResponse
 import com.mobile.cartridgemanagement.ui.network.responses.Departments
@@ -21,6 +23,9 @@ interface ApiService {
 
     @POST("get-departments")
     suspend fun getDepartments(): Departments
+
+    @POST("get-cartridge-info")
+    suspend fun getCartridgeInfo(@Body request: GetCartridgeInfo): CartridgeInfo
 
     @POST("add-new-cartridge")
     suspend fun addCartridge(@Body request: RequestBody): CartridgeResponse

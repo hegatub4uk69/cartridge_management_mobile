@@ -8,7 +8,6 @@
     android:padding="6dp"
     tools:context=".ui.cartridge_actions.CartridgeActionsFragment">
 
-    <!-- Центральный контейнер для всей формы -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/form_container"
         android:layout_width="0dp"
